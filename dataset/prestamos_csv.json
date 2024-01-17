@@ -1,0 +1,78 @@
+{
+	"name": "prestamos_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_FileServerMl",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "dataset-ml"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "LoanApprovalPrediction.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Loan_ID",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "Married",
+				"type": "String"
+			},
+			{
+				"name": "Dependents",
+				"type": "String"
+			},
+			{
+				"name": "Education",
+				"type": "String"
+			},
+			{
+				"name": "Self_Employed",
+				"type": "String"
+			},
+			{
+				"name": "ApplicantIncome",
+				"type": "String"
+			},
+			{
+				"name": "CoapplicantIncome",
+				"type": "String"
+			},
+			{
+				"name": "LoanAmount",
+				"type": "String"
+			},
+			{
+				"name": "Loan_Amount_Term",
+				"type": "String"
+			},
+			{
+				"name": "Credit_History",
+				"type": "String"
+			},
+			{
+				"name": "Property_Area",
+				"type": "String"
+			},
+			{
+				"name": "Loan_Status",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "OnPremise-pacientes_cvs",
+				"name": "OnPremise-Pacientes_cvs",
 				"type": "Copy",
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
@@ -63,10 +63,37 @@
 				]
 			},
 			{
-				"name": "OnPremise-pacientes_new",
-				"type": "Copy",
+				"name": "ETL-PACIENTES",
+				"type": "DatabricksNotebook",
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "OnPremise-Pacientes_cvs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/respaldodata1818@gmail.com/ETL-ML/ETL-PACIENTES"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_AzureDatabricks",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "OnPremise-Prestamos csv",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -111,13 +138,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "pacientes_new_csv",
+						"referenceName": "prestamos_csv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "pacientes_nuevos_dl",
+						"referenceName": "prestamos_dl",
 						"type": "DatasetReference"
 					}
 				]
