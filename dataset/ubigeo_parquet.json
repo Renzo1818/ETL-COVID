@@ -1,0 +1,54 @@
+{
+	"name": "ubigeo_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/file-parquets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-4763ae94-eb9e-4103-94a6-b668300554dd.c000.snappy.parquet",
+				"folderPath": "layers/gold/ubigeoGold",
+				"fileSystem": "storage"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "COD_UBIGEO",
+				"type": "UTF8"
+			},
+			{
+				"name": "COD_DEPARTAMENTO",
+				"type": "UTF8"
+			},
+			{
+				"name": "NOM_DEPARTAMENTO",
+				"type": "UTF8"
+			},
+			{
+				"name": "COD_PROVINCIA",
+				"type": "UTF8"
+			},
+			{
+				"name": "NOM_PROVINCIA",
+				"type": "UTF8"
+			},
+			{
+				"name": "NOM_DISTRITO",
+				"type": "UTF8"
+			},
+			{
+				"name": "REGION",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

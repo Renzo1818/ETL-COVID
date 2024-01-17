@@ -1,0 +1,49 @@
+{
+	"name": "tb_ubigeo_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/tables-sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COD_UBIGEO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_DEPARTAMENTO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOM_DEPARTAMENTO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_PROVINCIA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOM_PROVINCIA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOM_DISTRITO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REGION",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_UBIGEO"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

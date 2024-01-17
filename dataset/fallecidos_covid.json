@@ -1,0 +1,32 @@
+{
+	"name": "fallecidos_covid",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_filesOnPremises",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "dataset-covid"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "fallecidos_covid.csv",
+				"folderPath": "DATASETS"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FECHA_CORTE;FECHA_FALLECIMIENTO;EDAD_DECLARADA;SEXO;CLASIFICACION_DEF;DEPARTAMENTO;PROVINCIA;DISTRITO;UBIGEO;id_persona",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

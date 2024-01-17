@@ -1,0 +1,30 @@
+{
+	"name": "tb_metododx_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/tables-sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COD_METODO",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "METODODX",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_METODODX"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

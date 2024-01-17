@@ -1,0 +1,43 @@
+{
+	"name": "tb_positivos_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/tables-sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COD_POSITIVO",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "COD_UUID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_METODO",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "COD_UBIGEO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FECHA_RESULTADO",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FACT_POSITIVOS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,68 @@
+{
+	"name": "ubigeo_dl",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "lake/load-covid"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "load/dataset-covid",
+				"fileSystem": "storage"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FECHA_CORTE",
+				"type": "String"
+			},
+			{
+				"name": "FECHA_FALLECIMIENTO",
+				"type": "String"
+			},
+			{
+				"name": "EDAD_DECLARADA",
+				"type": "String"
+			},
+			{
+				"name": "SEXO",
+				"type": "String"
+			},
+			{
+				"name": "CLASIFICACION_DEF",
+				"type": "String"
+			},
+			{
+				"name": "DEPARTAMENTO",
+				"type": "String"
+			},
+			{
+				"name": "PROVINCIA",
+				"type": "String"
+			},
+			{
+				"name": "DISTRITO",
+				"type": "String"
+			},
+			{
+				"name": "UBIGEO",
+				"type": "String"
+			},
+			{
+				"name": "id_persona",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

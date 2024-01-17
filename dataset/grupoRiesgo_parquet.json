@@ -1,0 +1,34 @@
+{
+	"name": "grupoRiesgo_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/file-parquets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-4311c577-fe41-4c34-af20-c28304c2e9e2.c000.snappy.parquet",
+				"folderPath": "layers/gold/grupoRiesgoGold",
+				"fileSystem": "storage"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "COD_GRUPO",
+				"type": "INT64"
+			},
+			{
+				"name": "TIPO_GRUPO",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

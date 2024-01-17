@@ -1,0 +1,34 @@
+{
+	"name": "clasificacionDef_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/file-parquets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-c319e247-982f-4508-84a0-90acb2c740d5.c000.snappy.parquet",
+				"folderPath": "layers/gold/clasiDefGold",
+				"fileSystem": "storage"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "COD_DEF",
+				"type": "INT64"
+			},
+			{
+				"name": "CLASIFICACION_DEF",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

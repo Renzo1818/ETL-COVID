@@ -1,0 +1,34 @@
+{
+	"name": "diresa_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/file-parquets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-016a8147-c07a-4ad8-acba-ea81c822ed25.c000.snappy.parquet",
+				"folderPath": "layers/gold/diresaGold",
+				"fileSystem": "storage"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "COD_DIRESA",
+				"type": "INT64"
+			},
+			{
+				"name": "CENTRO_DIRESA",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

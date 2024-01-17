@@ -1,0 +1,100 @@
+{
+	"name": "ubigeo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_filesOnPremises",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "dataset-covid"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "TB_UBIGEOS.csv",
+				"folderPath": "DATASETS"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id_ubigeo",
+				"type": "String"
+			},
+			{
+				"name": "ubigeo_reniec",
+				"type": "String"
+			},
+			{
+				"name": "ubigeo_inei",
+				"type": "String"
+			},
+			{
+				"name": "departamento_inei",
+				"type": "String"
+			},
+			{
+				"name": "departamento",
+				"type": "String"
+			},
+			{
+				"name": "provincia_inei",
+				"type": "String"
+			},
+			{
+				"name": "provincia",
+				"type": "String"
+			},
+			{
+				"name": "distrito",
+				"type": "String"
+			},
+			{
+				"name": "region",
+				"type": "String"
+			},
+			{
+				"name": "macroregion_inei",
+				"type": "String"
+			},
+			{
+				"name": "macroregion_minsa",
+				"type": "String"
+			},
+			{
+				"name": "iso_3166_2",
+				"type": "String"
+			},
+			{
+				"name": "fips",
+				"type": "String"
+			},
+			{
+				"name": "superficie",
+				"type": "String"
+			},
+			{
+				"name": "altitud",
+				"type": "String"
+			},
+			{
+				"name": "latitud",
+				"type": "String"
+			},
+			{
+				"name": "longitud",
+				"type": "String"
+			},
+			{
+				"name": "Frontera",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

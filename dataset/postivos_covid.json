@@ -1,0 +1,32 @@
+{
+	"name": "postivos_covid",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_filesOnPremises",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "dataset-covid"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "positivos_covid.csv",
+				"folderPath": "DATASETS"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FECHA_CORTE;DEPARTAMENTO;PROVINCIA;DISTRITO;METODODX;EDAD;SEXO;FECHA_RESULTADO;UBIGEO;id_persona",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

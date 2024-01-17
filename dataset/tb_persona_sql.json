@@ -1,0 +1,34 @@
+{
+	"name": "tb_persona_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/tables-sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COD_UUID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EDAD",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SEXO",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_PERSONA"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

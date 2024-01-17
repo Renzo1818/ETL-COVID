@@ -1,0 +1,30 @@
+{
+	"name": "tb_diresa_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/tables-sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COD_DIRESA",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CENTRO_DIRESA",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_DIRESA"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

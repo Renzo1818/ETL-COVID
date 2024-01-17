@@ -1,0 +1,25 @@
+{
+	"name": "ls_FileServerMl",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Users\\Administrador\\Desktop\\archive",
+			"userId": "Administrador",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "on-premise-secret",
+				"secretVersion": "9674bdf848dc4901a38f6f75b7b3b576"
+			}
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeOnPremise",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

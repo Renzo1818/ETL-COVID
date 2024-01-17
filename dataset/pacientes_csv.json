@@ -1,0 +1,75 @@
+{
+	"name": "pacientes_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_FileServerMl",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "dataset-ml"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "Pacientes2.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "NOEXPED",
+				"type": "String"
+			},
+			{
+				"name": "Enfermedad",
+				"type": "String"
+			},
+			{
+				"name": "HIPERTEN",
+				"type": "String"
+			},
+			{
+				"name": "HIPERGLU",
+				"type": "String"
+			},
+			{
+				"name": "HDLBAJA",
+				"type": "String"
+			},
+			{
+				"name": "HIPERTRI",
+				"type": "String"
+			},
+			{
+				"name": "CINTALTA",
+				"type": "String"
+			},
+			{
+				"name": "EDAD",
+				"type": "String"
+			},
+			{
+				"name": "GENERO",
+				"type": "String"
+			},
+			{
+				"name": "FUMA",
+				"type": "String"
+			},
+			{
+				"name": "ALCOHOL",
+				"type": "String"
+			},
+			{
+				"name": "POLIURIA",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

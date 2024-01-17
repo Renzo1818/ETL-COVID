@@ -1,0 +1,9 @@
+{
+	"name": "testazurededf",
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "11d85131-9f93-499c-a530-41ab78254f59",
+		"tenantId": "92124c4d-242b-4a57-bf57-6ab8c9b013d2"
+	}
+}

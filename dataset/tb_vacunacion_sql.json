@@ -1,0 +1,58 @@
+{
+	"name": "tb_vacunacion_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/tables-sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "COD_VACUNACION",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "COD_UUID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_UBIGEO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_DIRESA",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "COD_GRUPO",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "COD_FABRICANTE",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "NUM_DOSIS",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "FECHA_VACUNACION",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FACT_VACUNACION"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

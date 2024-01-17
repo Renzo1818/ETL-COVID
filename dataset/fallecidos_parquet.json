@@ -1,0 +1,45 @@
+{
+	"name": "fallecidos_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "load-ETL/file-parquets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "layers/gold/fallecidosGold",
+				"fileSystem": "storage"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "COD_DECESO",
+				"type": "INT64"
+			},
+			{
+				"name": "COD_UUID",
+				"type": "UTF8"
+			},
+			{
+				"name": "COD_DEF",
+				"type": "INT64"
+			},
+			{
+				"name": "COD_UBIGEO",
+				"type": "UTF8"
+			},
+			{
+				"name": "FECHA_FALLECIMIENTO",
+				"type": "DATE"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,83 @@
+{
+	"name": "vacunacion_covid",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_filesOnPremises",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "dataset-covid"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "vacunas_covid.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FECHA_CORTE",
+				"type": "String"
+			},
+			{
+				"name": "UUID",
+				"type": "String"
+			},
+			{
+				"name": "GRUPO_RIESGO",
+				"type": "String"
+			},
+			{
+				"name": "EDAD",
+				"type": "String"
+			},
+			{
+				"name": "SEXO",
+				"type": "String"
+			},
+			{
+				"name": "FECHA_VACUNACION",
+				"type": "String"
+			},
+			{
+				"name": "DOSIS",
+				"type": "String"
+			},
+			{
+				"name": "FABRICANTE",
+				"type": "String"
+			},
+			{
+				"name": "DIRESA",
+				"type": "String"
+			},
+			{
+				"name": "DEPARTAMENTO",
+				"type": "String"
+			},
+			{
+				"name": "PROVINCIA",
+				"type": "String"
+			},
+			{
+				"name": "DISTRITO",
+				"type": "String"
+			},
+			{
+				"name": "CLASIFICACION_VACUNA",
+				"type": "String"
+			},
+			{
+				"name": "TIPO_EDAD",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
