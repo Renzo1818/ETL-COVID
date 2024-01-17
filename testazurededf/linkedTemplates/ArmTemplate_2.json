@@ -1352,7 +1352,7 @@
 						]
 					},
 					{
-						"name": "ETL-POSITIVOS",
+						"name": "ETL-PRESTAMOS",
 						"type": "DatabricksNotebook",
 						"state": "Inactive",
 						"onInactiveMarkAs": "Succeeded",
