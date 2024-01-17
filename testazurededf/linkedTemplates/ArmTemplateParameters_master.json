@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "testazurededf"
+		},
+		"ls_AzureSqlDatabase_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=testazuredeserversql.database.windows.net;Initial Catalog=DW_COVID;User ID=sqladmin"
+		},
+		"ls_azureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"value": "0111-230442-680ub6cj"
+		},
+		"ls_AzureKeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://testazurekvtest.vault.azure.net/"
+		},
+		"ls_FileServerMl_properties_typeProperties_host": {
+			"value": "C:\\Users\\Administrador\\Desktop\\archive"
+		},
+		"ls_FileServerMl_properties_typeProperties_userId": {
+			"value": "Administrador"
+		},
+		"ls_azureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://testazurededl.dfs.core.windows.net/"
+		},
+		"ls_filesOnPremises_properties_typeProperties_host": {
+			"value": "C:\\Users\\Administrador\\Desktop\\ETL-COVID"
+		},
+		"ls_filesOnPremises_properties_typeProperties_userId": {
+			"value": "Administrador"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,146 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "testazurededf"
+		},
+		"ls_AzureSqlDatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"ls_AzureSqlDatabase\"",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=testazuredeserversql.database.windows.net;Initial Catalog=DW_COVID;User ID=sqladmin"
+		},
+		"ls_azureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accountKey\"de \"ls_azureDataLakeStorage1\""
+		},
+		"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0111-230442-680ub6cj"
+		},
+		"ls_AzureKeyVault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://testazurekvtest.vault.azure.net/"
+		},
+		"ls_FileServerMl_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\Users\\Administrador\\Desktop\\archive"
+		},
+		"ls_FileServerMl_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "Administrador"
+		},
+		"ls_azureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://testazurededl.dfs.core.windows.net/"
+		},
+		"ls_filesOnPremises_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\Users\\Administrador\\Desktop\\ETL-COVID"
+		},
+		"ls_filesOnPremises_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "Administrador"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Token de SAS para la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "testazurededf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_AzureSqlDatabase_connectionString": {
+						"value": "[parameters('ls_AzureSqlDatabase_connectionString')]"
+					},
+					"ls_azureDataLakeStorage1_accountKey": {
+						"value": "[parameters('ls_azureDataLakeStorage1_accountKey')]"
+					},
+					"ls_AzureKeyVault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_AzureKeyVault_properties_typeProperties_baseUrl')]"
+					},
+					"ls_FileServerMl_properties_typeProperties_host": {
+						"value": "[parameters('ls_FileServerMl_properties_typeProperties_host')]"
+					},
+					"ls_FileServerMl_properties_typeProperties_userId": {
+						"value": "[parameters('ls_FileServerMl_properties_typeProperties_userId')]"
+					},
+					"ls_filesOnPremises_properties_typeProperties_host": {
+						"value": "[parameters('ls_filesOnPremises_properties_typeProperties_host')]"
+					},
+					"ls_filesOnPremises_properties_typeProperties_userId": {
+						"value": "[parameters('ls_filesOnPremises_properties_typeProperties_userId')]"
+					},
+					"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_AzureDatabricks_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_azureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('ls_azureDataLakeStorage1_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "testazurededf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'testazurededf_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "testazurededf_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'testazurededf_ArmTemplate_1')]"
+			]
+		}
+	]
+}

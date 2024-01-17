@@ -1,0 +1,902 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nombre de instancia de Data Factory",
+			"defaultValue": "testazurededf"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/fallecidos_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/file-parquets"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "layers/gold/fallecidosGold",
+						"fileSystem": "storage"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "COD_DECESO",
+						"type": "INT64"
+					},
+					{
+						"name": "COD_UUID",
+						"type": "UTF8"
+					},
+					{
+						"name": "COD_DEF",
+						"type": "INT64"
+					},
+					{
+						"name": "COD_UBIGEO",
+						"type": "UTF8"
+					},
+					{
+						"name": "FECHA_FALLECIMIENTO",
+						"type": "DATE"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/grupoRiesgo_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/file-parquets"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "part-00000-4311c577-fe41-4c34-af20-c28304c2e9e2.c000.snappy.parquet",
+						"folderPath": "layers/gold/grupoRiesgoGold",
+						"fileSystem": "storage"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "COD_GRUPO",
+						"type": "INT64"
+					},
+					{
+						"name": "TIPO_GRUPO",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/metododx_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/file-parquets"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "part-00000-92834f85-5c40-4229-a2c1-023268c5fa01.c000.snappy.parquet",
+						"folderPath": "layers/gold/metododxGold",
+						"fileSystem": "storage"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "COD_METODO",
+						"type": "INT64"
+					},
+					{
+						"name": "METODODX",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pacientes_ml_dl')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "lake/load-ml"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "load/dataset-ml",
+						"fileSystem": "storage"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pacientes_nuevos_dl')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "lake/load-ml"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "load/dataset-ml",
+						"fileSystem": "storage"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "NOEXPED",
+						"type": "String"
+					},
+					{
+						"name": "Enfermedad",
+						"type": "String"
+					},
+					{
+						"name": "HIPERTEN",
+						"type": "String"
+					},
+					{
+						"name": "HIPERGLU",
+						"type": "String"
+					},
+					{
+						"name": "HDLBAJA",
+						"type": "String"
+					},
+					{
+						"name": "HIPERTRI",
+						"type": "String"
+					},
+					{
+						"name": "CINTALTA",
+						"type": "String"
+					},
+					{
+						"name": "EDAD",
+						"type": "String"
+					},
+					{
+						"name": "GENERO",
+						"type": "String"
+					},
+					{
+						"name": "FUMA",
+						"type": "String"
+					},
+					{
+						"name": "ALCOHOL",
+						"type": "String"
+					},
+					{
+						"name": "POLIURIA",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/persona_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/file-parquets"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "layers/gold/personasGold",
+						"fileSystem": "storage"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "COD_UUID",
+						"type": "UTF8"
+					},
+					{
+						"name": "EDAD",
+						"type": "INT32"
+					},
+					{
+						"name": "SEXO",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/positivos_covid_dl')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "lake/load-covid"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "load/dataset-covid",
+						"fileSystem": "storage"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/positivos_parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/file-parquets"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "layers/gold/positivosGold",
+						"fileSystem": "storage"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "COD_POSITIVO",
+						"type": "INT64"
+					},
+					{
+						"name": "COD_UUID",
+						"type": "UTF8"
+					},
+					{
+						"name": "COD_METODO",
+						"type": "INT64"
+					},
+					{
+						"name": "COD_UBIGEO",
+						"type": "UTF8"
+					},
+					{
+						"name": "FECHA_RESULTADO",
+						"type": "DATE"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/prestamos_dl')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "lake/load-ml"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "load/dataset-ml",
+						"fileSystem": "storage"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "NOEXPED",
+						"type": "String"
+					},
+					{
+						"name": "Enfermedad",
+						"type": "String"
+					},
+					{
+						"name": "HIPERTEN",
+						"type": "String"
+					},
+					{
+						"name": "HIPERGLU",
+						"type": "String"
+					},
+					{
+						"name": "HDLBAJA",
+						"type": "String"
+					},
+					{
+						"name": "HIPERTRI",
+						"type": "String"
+					},
+					{
+						"name": "CINTALTA",
+						"type": "String"
+					},
+					{
+						"name": "EDAD",
+						"type": "String"
+					},
+					{
+						"name": "GENERO",
+						"type": "String"
+					},
+					{
+						"name": "FUMA",
+						"type": "String"
+					},
+					{
+						"name": "ALCOHOL",
+						"type": "String"
+					},
+					{
+						"name": "POLIURIA",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_clasificacionDef_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_DEF",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "CLASIFICACION_DEF",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_CLASIFICACIONDEF"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_diresa_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_DIRESA",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "CENTRO_DIRESA",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_DIRESA"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_fabricante_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_FABRICANTE",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "NOM_FABRICANTE",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_FABRICANTE"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_fallecidos_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_DECESO",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_UUID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COD_DEF",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_UBIGEO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FECHA_FALLECIMIENTO",
+						"type": "date"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "FACT_FALLECIDOS"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_grupo_riesgo_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_GRUPO",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "TIPO_GRUPO",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_GRUPO_RIESGO"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_metododx_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_METODO",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "METODODX",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_METODODX"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_persona_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_UUID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EDAD",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "SEXO",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_PERSONA"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_positivos_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_POSITIVO",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_UUID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COD_METODO",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_UBIGEO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FECHA_RESULTADO",
+						"type": "date"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "FACT_POSITIVOS"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_ubigeo_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_UBIGEO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COD_DEPARTAMENTO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NOM_DEPARTAMENTO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COD_PROVINCIA",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NOM_PROVINCIA",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NOM_DISTRITO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "REGION",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DIM_UBIGEO"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tb_vacunacion_sql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "load-ETL/tables-sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "COD_VACUNACION",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_UUID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COD_UBIGEO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COD_DIRESA",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_GRUPO",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "COD_FABRICANTE",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "NUM_DOSIS",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "FECHA_VACUNACION",
+						"type": "date"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "FACT_VACUNACION"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ubigeo_dl')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "lake/load-covid"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "load/dataset-covid",
+						"fileSystem": "storage"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "FECHA_CORTE",
+						"type": "String"
+					},
+					{
+						"name": "FECHA_FALLECIMIENTO",
+						"type": "String"
+					},
+					{
+						"name": "EDAD_DECLARADA",
+						"type": "String"
+					},
+					{
+						"name": "SEXO",
+						"type": "String"
+					},
+					{
+						"name": "CLASIFICACION_DEF",
+						"type": "String"
+					},
+					{
+						"name": "DEPARTAMENTO",
+						"type": "String"
+					},
+					{
+						"name": "PROVINCIA",
+						"type": "String"
+					},
+					{
+						"name": "DISTRITO",
+						"type": "String"
+					},
+					{
+						"name": "UBIGEO",
+						"type": "String"
+					},
+					{
+						"name": "id_persona",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		}
+	]
+}
