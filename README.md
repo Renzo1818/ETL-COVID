@@ -54,4 +54,17 @@ Diseño de un Data Lakehouse para almacenar los conjuntos de datos en su formato
 
 ![DATAMART VACUNACION SCHEMA](https://github.com/Renzo1818/ETL-COVID/assets/93232895/ff7fcbea-dc87-465b-8f1c-cb5952065cff)
 
+#### VISUALIZACIÓN Y ANÁLISIS DE DATOS: POWER BI
+Diseño de tableros para la eficaz visualización de los datos previamente procesados. Asimismo, la creación de indicadores a partir de funciones DAX para la óptima visualización de factores que puedan contribuir al desarrollo continuo de procesos que ayuden a detener la propagación del COVID-19 en el Perú.
 
+- PANEL DE CONTROL CASOS POSITIVOS:
+
+![DASHBOARD POSITIVOS](https://github.com/Renzo1818/ETL-COVID/assets/93232895/a72606c5-de21-476a-8c14-4f1d4c625c72)
+  
+- PANEL DE CONTROL REGISTROS DE VACUNACIÓN:
+
+![DASHBOARD VACUNACION](https://github.com/Renzo1818/ETL-COVID/assets/93232895/8d0dcf45-d405-4520-8cab-d10d00935caf)
+
+- PANEL DE CONTROL DE MORTALIDAD:
+
+![DASHBOARD FALLECIDOS](https://github.com/Renzo1818/ETL-COVID/assets/93232895/46b41013-1648-48e3-83dd-b11ccb3e0211)
