@@ -5,8 +5,6 @@
 			{
 				"name": "OnPremise-positivo",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -65,8 +63,6 @@
 			{
 				"name": "OnPremise-vacunacion",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -125,8 +121,6 @@
 			{
 				"name": "OnPremise-fallecidos",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -185,8 +179,6 @@
 			{
 				"name": "ETL-POSITIVOS",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "OnPremise-positivo",
@@ -214,8 +206,6 @@
 			{
 				"name": "OnPremise-ubigeo",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -274,8 +264,6 @@
 			{
 				"name": "ETL-FALLECIDOS",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "OnPremise-fallecidos",
@@ -303,8 +291,6 @@
 			{
 				"name": "ETL-UBIGEO",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "OnPremise-ubigeo",
@@ -332,8 +318,6 @@
 			{
 				"name": "ETL-VACUNACION",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "OnPremise-vacunacion",
@@ -361,8 +345,6 @@
 			{
 				"name": "load-tb_ubigeo",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-UBIGEO",
@@ -423,8 +405,6 @@
 			{
 				"name": "load-tb_metododx",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-POSITIVOS",
@@ -485,8 +465,6 @@
 			{
 				"name": "load-tb_positivos",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "load-tb_metododx",
@@ -549,8 +527,6 @@
 			{
 				"name": "load-tb_clasifiDef",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-FALLECIDOS",
@@ -611,8 +587,6 @@
 			{
 				"name": "load-tb_fallecidos",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "load-tb_clasifiDef",
@@ -675,8 +649,6 @@
 			{
 				"name": "load-tb_diresa",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-VACUNACION",
@@ -737,8 +709,6 @@
 			{
 				"name": "load-tb_fabricante",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-VACUNACION",
@@ -799,8 +769,6 @@
 			{
 				"name": "load-tb_grupo",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-VACUNACION",
@@ -861,8 +829,6 @@
 			{
 				"name": "load-tb_persona",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ETL-VACUNACION",
@@ -925,8 +891,6 @@
 			{
 				"name": "load-tb_vacunacion",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "load-tb_persona",
