@@ -5,8 +5,6 @@
 			{
 				"name": "OnPremise-Pacientes_cvs",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -65,8 +63,6 @@
 			{
 				"name": "ETL-PACIENTES",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "OnPremise-Pacientes_cvs",
@@ -94,8 +90,6 @@
 			{
 				"name": "OnPremise-Prestamos csv",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -154,8 +148,6 @@
 			{
 				"name": "ETL-PRESTAMOS",
 				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "OnPremise-Prestamos csv",
