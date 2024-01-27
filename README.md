@@ -38,7 +38,7 @@ Diseño de un Data Lakehouse para almacenar los conjuntos de datos en su formato
 ![DATABRICKS VACUNACION](https://github.com/Renzo1818/ETL-COVID/assets/93232895/6d873022-133e-47af-8ef0-f996ce01dfc4)
 
 #### AZURE SQL SERVER: DATA WAREHOUSE
-- ESQUEMA DATA WARE HOUSE:
+- ESQUEMA DATA WAREHOUSE:
 
 ![DATA WAREHOUSE SCHEMA](https://github.com/Renzo1818/ETL-COVID/assets/93232895/a4973821-25fd-4cac-a795-5e4a06bd358d)
   
