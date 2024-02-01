@@ -3,11 +3,8 @@ El presente proyecto tiene como objetivo analizar los datos masivos proporcionad
 
 
 ## ARQUITECTURA DE DATOS AZURE
-![image](https://github.com/Renzo1818/ETL-COVID/assets/93232895/b4351af7-f782-4312-94e1-2ce7c70f62e5)
 
-<p align="center">
-  <img src="https://learn.microsoft.com/de-de/azure/architecture/solution-ideas/media/azure-databricks-modern-analytics-architecture-diagram.png">
-</p>
+![image](https://github.com/Renzo1818/ETL-COVID/assets/93232895/4958be20-694c-4811-bf75-ee56d9f399e9)
 
 ## IMPLEMENTACION DE SERVICIOS AZURE
 #### AZURE DATA FACTORY: INGESTA Y ORQUESTADOR DE PROCESOS
